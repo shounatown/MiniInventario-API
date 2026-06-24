@@ -18,7 +18,6 @@ public class MiniInventarioApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        IO.println("Categoria");
         Categoria categoria = new Categoria();
     }
 }
