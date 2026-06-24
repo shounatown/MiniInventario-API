@@ -18,22 +18,28 @@ public class EmailServiceImpls implements EmailService {
 
     @Value("classpath:static/img/escom.jpg")
     private Resource resorceFile;
+    @Value("${spring.mail.username}")
+    private String remitente;
+
     @Override
     public void enviarCorreo(String to, String asunto, String texto) {
         MimeMessage mensaje = mailSender.createMimeMessage();
         MimeMessageHelper helper;
-        try{
+        try {
             helper = new MimeMessageHelper(mensaje, true, "UTF-8");
             helper.addAttachment("escom.jpg", resorceFile);
-            helper.setFrom("noreply@gmail.com", "Envio de correos via Spring");
+            helper.setFrom(remitente, "MiniInventario - Notificaciones");
+            
             helper.setSubject(asunto);
             helper.setText(texto, true);
             helper.setTo(to);
             helper.setCc("jonathanrojasiv@gmail.com");
+            
             mailSender.send(mensaje);
         }
-        catch (Exception ex){
+        catch (Exception ex) {
             ex.printStackTrace();
+            // Evitamos que tire un 500 lanzando una excepción controlada o simplemente dejando que continúe
         }
     }
 }
