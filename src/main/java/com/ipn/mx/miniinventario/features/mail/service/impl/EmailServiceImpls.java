@@ -24,14 +24,12 @@ public class EmailServiceImpls implements EmailService {
         MimeMessageHelper helper;
         try{
             helper = new MimeMessageHelper(mensaje, true, "UTF-8");
-            helper.addAttachment("archivo", new File(resorceFile.getFile().toURI()));
-
+            helper.addAttachment("escom.jpg", resorceFile);
             helper.setFrom("noreply@gmail.com", "Envio de correos via Spring");
             helper.setSubject(asunto);
             helper.setText(texto, true);
             helper.setTo(to);
             helper.setCc("jonathanrojasiv@gmail.com");
-            helper.setBcc("rojasromero.escom@gmail.com");
             mailSender.send(mensaje);
         }
         catch (Exception ex){
