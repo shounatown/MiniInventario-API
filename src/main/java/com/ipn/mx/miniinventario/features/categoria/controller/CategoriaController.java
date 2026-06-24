@@ -22,8 +22,6 @@ public class CategoriaController {
     @GetMapping("/categoria")
     @ResponseStatus(HttpStatus.OK)
     public List<Categoria> findAll(){
-
-        //emailService.enviarCorreo("leokisile1309@gmail.com", "Saludos coordiales", "Se han pedido todas las categorias");
         return categoriaService.findAll();
     }
 

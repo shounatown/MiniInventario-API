@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface CategoriaDAO extends JpaRepository<Categoria, Long> {
 
-    @Modifying // Indica que es una consulta que altera datos (DML)
+    @Modifying
     @Query("DELETE FROM Categoria c WHERE c.idCategoria = :id")
     void eliminarDirectoPorId(@Param("id") Long id);
 }

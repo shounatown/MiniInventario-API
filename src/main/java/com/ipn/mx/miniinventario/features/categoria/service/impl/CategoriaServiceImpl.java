@@ -38,10 +38,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Transactional
     @Override
     public void deleteById(Long id) {
-        // 1. Primero borramos todos los productos que dependan de esta categoría
         productoRepository.eliminarProductosPorCategoriaId(id);
-
-        // 2. Ahora que no hay productos huérfanos, borramos la categoría de forma segura
         categoriaRepository.eliminarDirectoPorId(id);
     }
 }

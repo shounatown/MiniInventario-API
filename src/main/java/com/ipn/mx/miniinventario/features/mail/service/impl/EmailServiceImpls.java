@@ -16,7 +16,7 @@ public class EmailServiceImpls implements EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Value("classpath:static/img/imagen.png")
+    @Value("classpath:static/img/escom.jpg")
     private Resource resorceFile;
     @Override
     public void enviarCorreo(String to, String asunto, String texto) {
@@ -30,8 +30,8 @@ public class EmailServiceImpls implements EmailService {
             helper.setSubject(asunto);
             helper.setText(texto, true);
             helper.setTo(to);
-            helper.setCc("equipotukey@gmail.com");
-            helper.setBcc("silva.lejarazo.leandro@gmail.com");
+            helper.setCc("jonathanrojasiv@gmail.com");
+            helper.setBcc("rojasromero.escom@gmail.com");
             mailSender.send(mensaje);
         }
         catch (Exception ex){
